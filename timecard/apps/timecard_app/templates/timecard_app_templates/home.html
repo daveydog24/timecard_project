@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login/Registration</title>
+    {% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'wish_list_static/css/my_css.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="clock_stamp">
+
+            </div>
+            <div class="points">
+
+            </div>
+            <div class="daily_report">
+
+            </div>
+            <div class="settings">
+
+            </div>
+            <div class="logout">
+
+            </div>
+        </div>
+        <div class="left_side">
+            <div class="top">
+                <div class="user_picture">
+
+                </div>
+                <div class="user_name">
+                    <h6>User Name</h6>
+                </div>
+                <div>
+                    <h6><a href="user_view"></a>Admin/User View</h6>
+                </div>
+            </div>
+            <div class="middle">
+                <div class="time">
+                    <h6>timestamp</h6>
+                </div>
+                <div class="punch">
+                    <button>Clock In/Out</button>
+                </div>
+                <div class="points">
+                    <div class="my_points">
+                        <h6>My Points</h6>
+                        <h3>{{ my_points }}</h3>
+                    </div>
+                    <div class="their_points">
+                        <h6>Their Points</h6>
+                        <h3>{{ their_points }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="quote">
+                    {{ daily_quote }}
+                </div>
+            </div>
+        </div>
+        <div class="right_side">
+            <h2>Clock Records</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Clock-in</th>
+                        <th>Clock-out</th>
+                        <th>Time Spent</th>
+                        <th>Points Earned</th>
+                        <th>Task Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--time info -->
+                    {% for record in time_records %} 
+                        <tr>
+                            <th>{{ record.date }}</th>
+                            <th>{{ record.clock_in }}</th>
+                            <th>{{ record.clock_out }}</th>
+                            <th>{{ record.time_spent }}</th>
+                            <th>{{ record.points_earned }}</th>
+                            <th>{{ record.description }}</th>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
